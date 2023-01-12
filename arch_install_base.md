@@ -1,6 +1,18 @@
-# Some tips
+# Some stuff
 
-### ERRORS
+### Requirements
+
+1. Disk should be partitioned beforehand for a UEFI installation
+
+### What it does?
+
+1. It creates logical volumes for "/" and "/home".
+2. It installs the package [base](https://archlinux.org/packages/core/any/base/).
+3. It "arch-chroot" you to the installation. 
+
+### Disk should be partitioned beforehand
+
+### Errors
 
 #### is apparently in use by the system will not make a filesystem here
 
