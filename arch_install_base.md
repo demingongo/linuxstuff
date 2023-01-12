@@ -21,7 +21,7 @@ You might have to unmount the device if it was mounted:
 umount /dev/sxyn
 ```
 
-Or maybe the device has logical volumes and group volumes. You have to remove them first:
+Maybe the device also has logical volumes and group volumes. You have to remove them first:
 ```sh
 # remove logical volumes from a volume group
 lvremove volume_group_name
