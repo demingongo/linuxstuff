@@ -29,14 +29,15 @@ ROOT_PART="${ROOT_PART:-$DFLT_ROOT_PART}"
 # echo
 # fdisk -l | grep -E -w "^Device.*Start"
 # fdisk -l | grep -E -w "^$ROOT_PART"
-echo
+# echo
 
 ## Confirm
 echo
-echo "Confirm:"
+# echo "Confirm:"
 fdisk -l | grep -E -w "^Device.*Start"
 # fdisk -l | grep -E -w "^$ESP_PART"
 fdisk -l | grep -E -w "^$ROOT_PART"
+echo
 echo -n "Ok? [y/N] "
 read c_answer
 if [[ "$c_answer" != "y" ]]; then
