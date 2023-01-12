@@ -145,7 +145,11 @@ echo
 ## Install base
 echo
 echo "INSTALLING base"
+### Do not exit if this one fails
+set +e
 pacman -Sy archlinux-keyring
+### Reset exits if one fails
+set -e
 pacstrap -i /mnt base
 echo
 
