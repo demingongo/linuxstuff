@@ -47,8 +47,7 @@ fi
 ## Format and label root partition
 echo
 mkfs -t ext4 "$ROOT_PART"
-echo
-echo -n "Label ext4 root file system #: "
+echo -n "$ROOT_PART label #: "
 read root_label
 e2label "$ROOT_PART" "$root_label"
 echo
