@@ -109,7 +109,7 @@ select l in "${VOL_ALLOC_TYPES_NAMES[@]}"; do
 done < /dev/tty
 sizeEg='100%FREE'
 if [[ "$VOL_ALLOC_TYPE" != "LogicalExtentsNumber" ]]; then sizeEg='100GB'; fi
-echo -n "Size of logical volume $LV_ROOT (e.g.: $sizeEg) #: "
+echo -n "Size of logical volume $LV_HOME (e.g.: $sizeEg) #: "
 read LV_HOME_SIZE
 CREATE_LV_HOME="lvcreate -${VOL_ALLOC_TYPES[$VOL_ALLOC_TYPE]} $LV_HOME_SIZE $VOL_GROUP -n $LV_HOME"
 echo
