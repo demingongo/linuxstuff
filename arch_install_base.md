@@ -6,23 +6,26 @@
 
 ### What it does?
 
-1. It creates logical volumes for "/" and "/home".
+1. It creates logical volumes for "/" and "/home" in a file system.
 2. It installs the package [base](https://archlinux.org/packages/core/any/base/).
 3. It "arch-chroot" you to the installation. 
-
-### Disk should be partitioned beforehand
 
 ### Errors
 
 #### is apparently in use by the system will not make a filesystem here
 
-You might have to unmount the device if it was mounted: 
+You might have to unmount the file system if it was mounted: 
 ```sh
+# unmount one specific file system
 umount /dev/sxyn
-```
 
-Maybe the device also has logical volumes and group volumes. You have to remove them first:
+# or unmount all of the file systems described in /etc/mtab
+umount -a
+```
+If the file system has logical volumes and volume groups, you have to remove them:
 ```sh
+# display information about volume groups
+vgs
 # remove logical volumes from a volume group
 lvremove volume_group_name
 # deactivate the group, it should display that there are 0 logical volumes
