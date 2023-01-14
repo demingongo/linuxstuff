@@ -4,7 +4,7 @@
 set -euo pipefail
 
 echo
-echo "!!! PLEASE SELECT OPTION 'mkinitcpio' WHEN ASKED !!!"
+echo -e "\033[0;33m!!! PLEASE SELECT OPTION 'mkinitcpio' WHEN ASKED !!!\033[0m"
 echo
 
 # Install kernels and headers (please select mkinitcpio option)

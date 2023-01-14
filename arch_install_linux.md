@@ -10,7 +10,7 @@ Feel free to update the script to fit your needs.
 
 ### Requirements
 
-1. SHould be "arch-chroot"ed in the disk where [base](https://archlinux.org/packages/core/any/base/) was installed.
+1. Should be "arch-chroot"ed in the disk where [base](https://archlinux.org/packages/core/any/base/) was installed.
 
 ### What it does?
 
@@ -26,5 +26,6 @@ After that, you do whatever you want!
 ```sh
 curl -L https://github.com/demingongo/linuxstuff/releases/download/<tag>/arch_install_linux.sh --output arch_install_linux.sh
 bash arch_install_linux.sh
+rm arch_install_linux.sh
 ```
 Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases
