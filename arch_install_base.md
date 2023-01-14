@@ -31,7 +31,7 @@ Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff
 
 ### Errors
 
-#### is apparently in use by the system will not make a filesystem here
+#### sxyz is apparently in use by the system; will not make a filesystem here!
 
 You might have to unmount the file system if it was mounted: 
 ```sh
@@ -47,8 +47,10 @@ If the file system has logical volumes and volume groups, you have to remove the
 vgs
 # remove logical volumes from a volume group
 lvremove volume_group_name
-# deactivate the group, it should display that there are 0 logical volumes
+# deactivate the group, it should display that there are 0 logical volumes active in the group
 vgchange -a n volume_group_name
 # remove volume group
 vgremove volume_group_name
 ```
+
+If "lvremove", "vgchange" and/or "vgremove" commands fail, reboot you computer and try downloading and executing the script again.
