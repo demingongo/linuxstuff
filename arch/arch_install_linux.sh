@@ -32,6 +32,26 @@ mkinitcpio -p linux-lts
 sed -i -E -e '/^(#en_US.UTF-8|#fr_BE.UTF-8)/s/^#//' /etc/locale.gen
 locale-gen
 
+# Timezone setup
+echo
+echo -n "Timezone (optional) #: "
+read TZ
+if [[ ! -z "$TZ" ]]; then
+    timedatectl set-timezone "$TZ"
+    systemctl enable systemd-timesyncd
+fi
+
+# Hostname setup
+echo
+echo -n "Hostname (optional) #: "
+read HOSTNAME_USER
+if [[ ! -z "$HOSTNAME_USER" ]]; then
+    hostnamectl set-hostname "$HOSTNAME_USER"
+    echo "127.0.0.1 localhost" | tee -a /etc/hosts
+    echo "::1       localhost" | tee -a /etc/hosts
+    echo "127.0.1.1 $HOSTNAME_USER" | tee -a /etc/hosts
+fi
+
 # Users setup
 echo
 echo "ROOT SETUP:"
