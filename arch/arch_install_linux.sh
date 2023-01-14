@@ -10,13 +10,14 @@ echo
 # Install kernels and headers (please select mkinitcpio option)
 pacman -S linux linux-headers linux-lts linux-lts-headers
 
-# Some other usefull stuff
+# Some usefull tools
 pacman -S base-devel lvm2 openssh \
 networkmanager wpa_supplicant wireless_tools netctl dialog \
 git \
 vim nano \
+htop
 
-# Enable some stuff at startup
+# Enable some tools at startup
 systemctl enable sshd
 systemctl enable NetworkManager
 
