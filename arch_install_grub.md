@@ -20,8 +20,6 @@ Feel free to update the script to fit your needs.
 2. It does some basic configuration of grub.
 3. IT GIVES YOU INSTRUCTIONS ON WHAT YOU SHOULD DO NEXT. 
 
-After that, reboot or shutdown and boot from the disk where you installed Arch Linux.
-
 ### How to use?
 
 Boot your computer from USB containing Arch ISO and enter:
@@ -30,4 +28,6 @@ curl -L https://github.com/demingongo/linuxstuff/releases/download/<tag>/arch_in
 bash arch_install_grub.sh
 rm arch_install_grub.sh
 ```
-Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases
+(Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases)
+
+After that, reboot or shutdown and boot from where Arch Linux boots.

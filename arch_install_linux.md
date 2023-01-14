@@ -18,8 +18,6 @@ Feel free to update the script to fit your needs.
 2. It installs and configures some packages.
 3. Setup root password and add a new user. 
 
-After that, you do whatever you want!
-
 ### How to use?
 
 "arch-chroot"ed with only [base](https://archlinux.org/packages/core/any/base/) installed, download the script and execute it:
@@ -28,4 +26,6 @@ curl -L https://github.com/demingongo/linuxstuff/releases/download/<tag>/arch_in
 bash arch_install_linux.sh
 rm arch_install_linux.sh
 ```
-Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases
+(Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases)
+
+After that, you do whatever you want!
