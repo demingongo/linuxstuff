@@ -34,7 +34,7 @@ locale-gen
 
 # Timezone setup
 echo
-echo -n "Timezone (optional) #: "
+echo -n "Enter timezone (optional if you want to set it later) (e.g.: Atlantic/Cape_Verde) #: "
 read TZ
 if [[ ! -z "$TZ" ]]; then
     timedatectl set-timezone "$TZ"
@@ -43,13 +43,17 @@ fi
 
 # Hostname setup
 echo
-echo -n "Hostname (optional) #: "
+echo -n "Enter hostname (optional if you want to set it later) #: "
 read HOSTNAME_USER
 if [[ ! -z "$HOSTNAME_USER" ]]; then
     hostnamectl set-hostname "$HOSTNAME_USER"
+    echo
     echo "127.0.0.1 localhost" | tee -a /etc/hosts
     echo "::1       localhost" | tee -a /etc/hosts
     echo "127.0.1.1 $HOSTNAME_USER" | tee -a /etc/hosts
+    echo
+    echo
+    hostnamectl
 fi
 
 # Users setup
