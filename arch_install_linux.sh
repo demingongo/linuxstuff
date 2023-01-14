@@ -4,7 +4,7 @@
 set -euo pipefail
 
 echo
-echo "PLEASE SELECT OPTION 'mkinitcpio' WHEN ASKED !!!"
+echo "!!! PLEASE SELECT OPTION 'mkinitcpio' WHEN ASKED !!!"
 echo
 
 # Install kernels and headers (please select mkinitcpio option)
@@ -41,6 +41,7 @@ read NEW_USERNAME
 useradd -m -g users -G wheel "$NEW_USERNAME"
 passwd "$NEW_USERNAME"
 cp /etc/sudoers /tmp/sudoers_tmp
-sed -e '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /tmp/sudoers_tmp
+sed -i -e '/^# %wheel ALL=(ALL:ALL) ALL/s/^# //' /tmp/sudoers_tmp
 visudo -c -f /tmp/sudoers_tmp
 EDITOR="cp /tmp/sudoers_tmp" visudo
+rm -f /tmp/sudoers_tmp

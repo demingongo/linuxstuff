@@ -2,7 +2,7 @@
 
 ##################################################
 
-NO GUARANTEE!
+!!! NO GUARANTEE !!!
 
 Feel free to update the script to fit your needs.
 
@@ -41,7 +41,12 @@ umount /dev/sxyn
 # or unmount all of the file systems described in /etc/mtab
 umount -a
 ```
-If the file system has logical volumes and volume groups, you have to remove them:
+Then, reboot. (In some cases it is not necessary but it's cleaner to do so)
+```sh
+reboot
+```
+
+Once booted (in the ISO), if the file system has logical volumes and volume groups, you have to remove them:
 ```sh
 # display information about volume groups
 vgs
@@ -52,5 +57,3 @@ vgchange -a n volume_group_name
 # remove volume group
 vgremove volume_group_name
 ```
-
-If "lvremove", "vgchange" and/or "vgremove" commands fail, reboot you computer and try downloading and executing the script again.
