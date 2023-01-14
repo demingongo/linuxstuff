@@ -9,7 +9,7 @@ sudo echo
 ## Select esp partition
 DFLT_ESP_PART="/dev/sda1"
 echo
-echo -n "Enter root partition (default: $DFLT_ESP_PART) #: "
+echo -n "Enter EFI partition (default: $DFLT_ESP_PART) #: "
 read ESP_PART
 ESP_PART="${ESP_PART:-$DFLT_ESP_PART}"
 
