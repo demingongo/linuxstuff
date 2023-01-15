@@ -8,7 +8,7 @@ echo -e "\033[0;33m!!! PLEASE SELECT OPTION 'mkinitcpio' WHEN ASKED !!!\033[0m"
 echo
 
 # Install kernels and headers (please select mkinitcpio option)
-pacman -S linux linux-headers linux-lts linux-lts-headers
+pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
 
 # Some usefull tools
 pacman -S base-devel lvm2 openssh \
@@ -31,30 +31,6 @@ mkinitcpio -p linux-lts
 # Uncomment and generate some locales
 sed -i -E -e '/^(#en_US.UTF-8|#fr_BE.UTF-8)/s/^#//' /etc/locale.gen
 locale-gen
-
-# Timezone setup
-echo
-echo -n "Enter timezone (optional if you want to set it later) (e.g.: Atlantic/Cape_Verde) #: "
-read TZ
-if [[ ! -z "$TZ" ]]; then
-    timedatectl set-timezone "$TZ"
-    systemctl enable systemd-timesyncd
-fi
-
-# Hostname setup
-echo
-echo -n "Enter hostname (optional if you want to set it later) #: "
-read HOSTNAME_USER
-if [[ ! -z "$HOSTNAME_USER" ]]; then
-    hostnamectl set-hostname "$HOSTNAME_USER"
-    echo
-    echo "127.0.0.1 localhost" | tee -a /etc/hosts
-    echo "::1       localhost" | tee -a /etc/hosts
-    echo "127.0.1.1 $HOSTNAME_USER" | tee -a /etc/hosts
-    echo
-    echo
-    hostnamectl
-fi
 
 # Users setup
 echo
