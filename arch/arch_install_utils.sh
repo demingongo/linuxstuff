@@ -22,9 +22,9 @@ read HOSTNAME_USER
 if [[ ! -z "$HOSTNAME_USER" ]]; then
     sudo hostnamectl set-hostname "$HOSTNAME_USER"
     echo
-    echo "127.0.0.1 localhost" | tee -a /etc/hosts
-    echo "::1       localhost" | tee -a /etc/hosts
-    echo "127.0.1.1 $HOSTNAME_USER" | tee -a /etc/hosts
+    echo "127.0.0.1 localhost" | sudo tee -a /etc/hosts
+    echo "::1       localhost" | sudo tee -a /etc/hosts
+    echo "127.0.1.1 $HOSTNAME_USER" | sudo tee -a /etc/hosts
     echo
     echo
     sudo hostnamectl
