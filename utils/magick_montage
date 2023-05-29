@@ -59,18 +59,21 @@ fi
 
 bg_opt="background"
 bg_value='white'
-bg_type=`gum choose {'color','image'}`
+bg_type=`gum choose {'color','image','none'}`
+geometry='+40+10'
 
-if [ "$bg_type" = 'image' ]; then
+if [ "$bg_type" = 'color' ]; then	
+	bg_value=`gum input`
+	bg_value="'$bg_value'"
+elif [ "$bg_type" = 'image' ]; then
 	bg_opt="texture"
 	tmp_bg_value=`gum file $search_path`
 	bg_value="\"${tmp_bg_value}\""
 else
-	bg_value=`gum input`
-	bg_value="'$bg_value'"
+	geometry='+0+0'
 fi
 
-MONTAGE_CMD="montage -${bg_opt} ${bg_value} -tile 1x${nb_files} -geometry +40+10 ${FILES} \"$1\""
+MONTAGE_CMD="montage -${bg_opt} ${bg_value} -tile 1x${nb_files} -geometry ${geometry} ${FILES} \"$1\""
 
 #echo "$MONTAGE_CMD"
 
