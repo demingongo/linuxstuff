@@ -27,7 +27,7 @@ fi
 ## Install grub and stuff
 sudo pacman -S grub efibootmgr dosfstools os-prober mtools
 sudo mkdir -p /efi
-sudo mount /dev/sda1 /efi
+sudo mount ${ESP_PART} /efi
 DFLT_BOOTLOADER_ID='arch_linux'
 echo
 echo -n "Enter bootloader id (default: $DFLT_BOOTLOADER_ID) #: "
