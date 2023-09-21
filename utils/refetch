@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+ASSETS_DIR=~/.config/neofetch/assets
+
+pngs=()
+
+if [ -d "$ASSETS_DIR" ]; then
+	for entry in "$ASSETS_DIR"/*
+	do
+		filename=$(basename -- "$entry")
+		extension="${filename##*.}"
+		if [ "$extension" == "png" ]; then
+			pngs+=("$entry")
+		fi
+	done
+fi
+
+selected_png=${selected_png:=}
+
+if [ ${#pngs[@]} -gt 0 ]; then
+	requested_png=''
+	if [ $# -gt 0 ]; then
+		echo "sdss"
+		requested_png=${pngs[$1]}; 
+	fi
+	if [ ! -z "$requested_png" ]; then
+		selected_png="$requested_png"
+	elif [ ${#pngs[@]} -eq 1 ]; then
+		selected_png="${pngs[0]}"
+	else
+		idx=$(( ( RANDOM % ${#pngs[@]} ) ))
+		selected_png="${pngs[$idx]}"
+	fi
+fi
+
+FETCH_CMD="neofetch --config ~/.config/neofetch/shyfetch.conf"
+
+if [ ! -z "$selected_png" ]; then
+	FETCH_CMD="${FETCH_CMD} --backend kitty --source ${selected_png} --image_size 250px"
+fi
+
+eval $FETCH_CMD
