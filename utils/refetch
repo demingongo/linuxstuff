@@ -1,42 +1,101 @@
 #!/usr/bin/env bash
 
-ASSETS_DIR=~/.config/neofetch/assets
+# parse options
+opts=$(getopt --longoptions=ascii,logo,image_size: --name "$0" --options "" -- "$@")
 
-pngs=()
+eval set -- $opts
+
+unset opts
+
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+		"--ascii")
+            		ASCII_OPT=true
+            		shift 1
+			;;
+		"--logo")
+            		LOGO_OPT=true
+            		shift 1
+			;;
+		"--image_size")
+            		IMAGE_SIZE_OPT="$2"
+            		shift 2
+			;;
+        	"--")
+	  	        shift
+	            	break
+        		;;
+        	*)
+			echo "Error $1" >&2
+			exit 1
+            		;;
+    esac
+done
+
+PNG_DIR="$HOME/.config/neofetch/assets/png"
+PNG_EXT="png"
+
+ASCII_DIR=~/.config/neofetch/assets/ascii
+ASCII_EXT="txt"
+
+cmd_end=""
+
+if [ "$ASCII_OPT" = true ]; then
+	ASSETS_DIR="$ASCII_DIR"
+	ASSETS_EXT="$ASCII_EXT"
+	BACKEND="--ascii"
+else
+	ASSETS_DIR="$PNG_DIR"
+	ASSETS_EXT="$PNG_EXT"
+	BACKEND="--backend kitty --source"
+	if [[ -n "$IMAGE_SIZE_OPT" ]]; then
+		cmd_end="${cmd_end} --image_size ${IMAGE_SIZE_OPT}"
+	else
+		cmd_end="${cmd_end} --image_size 250px"
+	fi
+
+fi
+
+if [ "$LOGO_OPT" = true ]; then
+	cmd_end="${cmd_end} --logo"
+fi
+
+items=()
 
 if [ -d "$ASSETS_DIR" ]; then
 	for entry in "$ASSETS_DIR"/*
 	do
 		filename=$(basename -- "$entry")
 		extension="${filename##*.}"
-		if [ "$extension" == "png" ]; then
-			pngs+=("$entry")
+		if [ "$extension" == "$ASSETS_EXT" ]; then
+			items+=("$entry")
 		fi
 	done
 fi
 
-selected_png=${selected_png:=}
+selected_item=${selected_item:=}
 
-if [ ${#pngs[@]} -gt 0 ]; then
-	requested_png=''
+if [ ${#items[@]} -gt 0 ]; then
+	requested_item=''
 	if [ $# -gt 0 ]; then
-		echo "sdss"
-		requested_png=${pngs[$1]}; 
+		requested_item=${items[$1]}; 
 	fi
-	if [ ! -z "$requested_png" ]; then
-		selected_png="$requested_png"
+	if [ ! -z "$requested_item" ]; then
+		selected_item="$requested_item"
 	elif [ ${#pngs[@]} -eq 1 ]; then
-		selected_png="${pngs[0]}"
+		selected_item="${items[0]}"
 	else
-		idx=$(( ( RANDOM % ${#pngs[@]} ) ))
-		selected_png="${pngs[$idx]}"
+		idx=$(( ( RANDOM % ${#items[@]} ) ))
+		selected_item="${items[$idx]}"
 	fi
 fi
 
 FETCH_CMD="neofetch --config ~/.config/neofetch/shyfetch.conf"
 
-if [ ! -z "$selected_png" ]; then
-	FETCH_CMD="${FETCH_CMD} --backend kitty --source ${selected_png} --image_size 250px"
+if [ ! -z "$selected_item" ]; then
+	FETCH_CMD="${FETCH_CMD} ${BACKEND} ${selected_item} ${cmd_end}"
 fi
+
+clear
 
 eval $FETCH_CMD
