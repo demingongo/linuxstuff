@@ -1,0 +1,52 @@
+[Icon Theme]
+Name=rice-work-kora-light-panel
+Comment=Kora green icon theme for GNU/Linux
+
+Inherits=kora-light-panel,breeze,Adwaita,hicolor
+
+Example=folder
+
+FollowsColorScheme=true
+
+# KDE Specific Stuff
+DisplayDepth=32
+LinkOverlay=link_overlay
+LockOverlay=lock_overlay
+ZipOverlay=zip_overlay
+DesktopDefault=48
+DesktopSizes=16,22,32,48,64,128,256
+ToolbarDefault=22
+ToolbarSizes=16,22,32,48
+MainToolbarDefault=22
+MainToolbarSizes=16,22,32,48
+SmallDefault=16
+SmallSizes=16,22,32,48
+PanelDefault=48
+PanelSizes=16,22,32,48,64,128,256
+DialogDefault=32
+DialogSizes=16,22,32,48,64,128,256
+
+
+########## DIRECTORY LIST
+########## ordered by category and alphabetically
+
+Directories=places/scalable,places/scalable@2
+
+########## ICON CATEGORIES
+
+########## Places
+
+[places/scalable]
+Context=Places
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[places/scalable@2]
+Context=Places
+Size=16
+Scale=2
+MinSize=8
+MaxSize=512
+Type=Scalable
