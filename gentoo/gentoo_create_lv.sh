@@ -7,9 +7,6 @@ set -euo pipefail
 # DFLT_ESP_PART="/dev/sda1"
 DFLT_ROOT_PART="/dev/sda2"
 
-# Authorize sudo
-sudo echo
-
 ## Select root partition
 echo
 echo -n "Enter root partition (default: $DFLT_ROOT_PART) #: "

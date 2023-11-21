@@ -21,15 +21,3 @@ Feel free to update the script to fit your needs.
 echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub, echo 'GRUB_CMDLINE_LINUX="rd.lvm.vg=<volumeGroup>"' >> /etc/default/grub
 3. grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=<gentooman>
 4. grub-mkconfig -o /boot/grub/grub.cfg 
-
-### How to use?
-
-Boot your computer from USB containing Arch ISO and enter:
-```sh
-curl -L https://github.com/demingongo/linuxstuff/releases/download/<tag>/arch_install_grub.sh --output arch_install_grub.sh
-bash arch_install_grub.sh
-rm arch_install_grub.sh
-```
-(Find available values for \<tag\> here: https://github.com/demingongo/linuxstuff/releases)
-
-After that, reboot or shutdown and boot from where Arch Linux boots.
