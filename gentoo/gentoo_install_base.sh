@@ -25,7 +25,6 @@ cat ./assets/make.conf >> /etc/portage/make.conf
 cp ./assets/package.use/* /etc/portage/package.use
 if [[ ! -z "$VIDEO_CARDS" ]]; then
     echo "VIDEO_CARDS=\"$VIDEO_CARDS\"" >> /etc/portage/make.conf
-    sudo systemctl enable systemd-timesyncd
 fi
 emerge --ask --verbose --update --deep --newuse @world
 

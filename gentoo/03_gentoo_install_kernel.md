@@ -14,8 +14,6 @@ Should be "arch-chroot"ed in the disk and have installed the [Gentoo base system
 
 ### What it does?
 
-Install kernel
-
 1. Installs firmware
 2. Installs a distribution kernel
 3. Rebuilds the initramfs for lvm support
