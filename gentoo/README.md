@@ -1,4 +1,4 @@
-# arch
+# gentoo
 
 Info:
 
