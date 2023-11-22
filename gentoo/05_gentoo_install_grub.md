@@ -16,7 +16,7 @@ Feel free to update the script to fit your needs.
 
 ### What it does?
 
-1. Mount partition to /efi
+1. Mount esp partition to /efi
 2. echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf, emerge --ask sys-boot/grub, emerge --ask sys-boot/os-prober,
 echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub, echo 'GRUB_CMDLINE_LINUX="rd.lvm.vg=<volumeGroup>"' >> /etc/default/grub
 3. grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=<gentooman>

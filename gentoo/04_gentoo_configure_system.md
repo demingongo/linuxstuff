@@ -27,3 +27,4 @@ Feel free to update the script to fit your needs.
 11. Installs bash completion
 12. Sets up time synchronization (chrony)
 13. Sets up filesystem tools (vfat, xfs, ntfs)
+14. and more ...

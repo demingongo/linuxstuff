@@ -90,6 +90,16 @@ echo
 rc-update add dbus default
 echo
 
+# udisks
+echo
+emerge --ask sys-fs/udisks
+echo
+
+# rebuild some dependencies if needed
+echo
+emerge --changed-use --deep @world
+echo
+
 ## What now ?
 echo
 echo -e "\033[0;32mGREAT ...\033[0m"
