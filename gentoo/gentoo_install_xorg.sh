@@ -18,11 +18,11 @@ emerge --ask x11-base/xorg-server --verbose
 echo
 mkdir -p /etc/X11/xorg.conf.d
 echo
-echo """Section "InputClass"
-    Identifier "keyboard-all"
-    Driver "evdev"
-    Option "XkbLayout" "${XKBLAYOUT}"
-    MatchIsKeyboard "on"
+echo """Section \"InputClass\"
+    Identifier \"keyboard-all\"
+    Driver \"evdev\"
+    Option \"XkbLayout\" \"${XKBLAYOUT}\"
+    MatchIsKeyboard \"on\"
 EndSection
 """ >> /etc/X11/xorg.conf.d/10-keyboard.conf
 echo
@@ -44,7 +44,7 @@ DisplayCommand=/etc/sddm/scripts/Xsetup
 """ >> /etc/sddm.conf.d/override.conf
 echo
 sed -i '/^DISPLAYMANAGER=/d' /etc/conf.d/display-manager
-echo 'DISPLAYMANAGER="sddm"' | tee -a /etc/default/grub
+echo 'DISPLAYMANAGER="sddm"' | tee -a /etc/conf.d/display-manager
 echo
 rc-update add display-manager default
 echo
