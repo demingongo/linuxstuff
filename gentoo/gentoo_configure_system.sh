@@ -76,6 +76,20 @@ echo
 emerge sys-block/io-scheduler-udev-rules
 echo
 
+# elogind
+echo
+emerge --ask sys-auth/elogind
+echo
+rc-update add elogind boot
+echo
+
+# dbus
+echo
+emerge --ask sys-apps/dbus
+echo
+rc-update add dbus default
+echo
+
 ## What now ?
 echo
 echo -e "\033[0;32mGREAT ...\033[0m"
