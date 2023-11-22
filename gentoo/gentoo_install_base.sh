@@ -22,7 +22,7 @@ emerge --sync
 
 ## Updates the @world set
 cat ./assets/make.conf >> /etc/portage/make.conf
-cp ./assets/package.use/* /etc/portage/package.use
+cp ./assets/package.use/* /etc/portage/package.use/
 if [[ ! -z "$VIDEO_CARDS" ]]; then
     echo "VIDEO_CARDS=\"$VIDEO_CARDS\"" >> /etc/portage/make.conf
 fi
@@ -39,7 +39,9 @@ emerge --config sys-libs/timezone-data
 
 ## Configure locales
 echo
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+sed -i '/^en_US.UTF-8 UTF-8/d' /etc/locale.gen
+sed -i '/^#en_US.UTF-8 UTF-8/d' /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" | tee -a /etc/locale.gen
 locale-gen
 eselect locale list
 echo

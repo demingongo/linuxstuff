@@ -1,0 +1,10 @@
+media-libs/libsndfile minimal
+media-sound/pulseaudio glib
+# required by media-sound/cava-0.9.1::gentoo[sdl]
+# required by media-sound/cava (argument)
+>=media-libs/libsdl2-2.28.3 opengl
+# required by media-sound/pulseaudio-daemon-16.1-r7::gentoo[alsa,alsa-plugin]
+# required by media-libs/libpulse-16.1-r2::gentoo
+# required by www-client/firefox-bin-119.0.1::gentoo[pulseaudio]
+# required by www-client/firefox-bin (argument)
+>=media-plugins/alsa-plugins-1.2.7.1-r1 pulseaudio
