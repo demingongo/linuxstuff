@@ -91,13 +91,3 @@ emerge --ask lxde-base/lxappearance
 echo
 emerge --ask media-gfx/gimp media-gfx/imagemagick
 echo
-
-if ! command -v go &> /dev/null
-then
-    # echo "go not found"
-    echo
-else
-    go install github.com/charmbracelet/glow@latest
-    go install github.com/charmbracelet/gum@latest
-    break
-fi
