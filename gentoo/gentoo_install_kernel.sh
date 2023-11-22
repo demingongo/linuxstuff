@@ -15,7 +15,7 @@ emerge --ask sys-kernel/gentoo-kernel
 eselect kernel list
 echo
 ls -l /usr/src/linux
-KERNEL_VERSION=`aws -F'-> linux-' '{print $2}' <<< $(ls -l /usr/src/linux)`
+KERNEL_VERSION=`awk -F'-> linux-' '{print $2}' <<< $(ls -l /usr/src/linux)`
 echo "$KERNEL_VERSION"
 echo
 
@@ -28,6 +28,8 @@ dracut --kver=$KERNEL_VERSION -a lvm --force
 echo
 ls /boot/initramfs*
 echo
+
+# TODO: Optional: propose to choose a swap partition and if chosen, complete fstab
 
 ## What now ?
 echo

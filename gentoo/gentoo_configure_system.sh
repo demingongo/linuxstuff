@@ -71,7 +71,7 @@ echo
 
 ## Filesystem tools
 echo
-emerge --ask sys-fs/dosfstool sys-fs/xfsprog sys-fs/ntfs3g
+emerge --ask sys-fs/dosfstools sys-fs/xfsprogs sys-fs/ntfs3g
 echo
 emerge sys-block/io-scheduler-udev-rules
 echo
