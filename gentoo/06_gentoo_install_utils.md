@@ -34,4 +34,4 @@ Feel free to update the script to fit your needs.
     - `ufw enable`
     - `ufw reload`
 6. Installs others
-    - `emerge --ask app-misc/neofetch`
+    - `emerge --ask sys-process/htop app-misc/neofetch`

@@ -21,7 +21,7 @@ Feel free to update the script to fit your needs.
       echo """Section "InputClass"
           Identifier "keyboard-all"
           Driver "evdev"
-          Option "XkbLayout" "be"
+          Option "XkbLayout" "<XKBLAYOUT>"
           MatchIsKeyboard "on"
       EndSection
       """ >> /etc/X11/xorg.conf.d/10-keyboard.conf
@@ -54,3 +54,5 @@ Feel free to update the script to fit your needs.
     - `emerge --ask x11-apps/xinput`
     - `emerge --ask x11-misc/xdotool`
     - `emerge --ask media-gfx/scrot`
+    - `emerge --ask x11-terms/xterm`
+6. Bonus: Awesome wm + some tools
