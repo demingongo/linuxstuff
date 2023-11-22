@@ -10,7 +10,7 @@ Feel free to update the script to fit your needs.
 
 ### Requirements
 
-- gentoo
+- Be connected as "root" in a gentoo environment.
 
 ### What it does?
 
