@@ -44,7 +44,7 @@ DisplayCommand=/etc/sddm/scripts/Xsetup
 """ >> /etc/sddm.conf.d/override.conf
 echo
 sed -i '/^DISPLAYMANAGER=/d' /etc/conf.d/display-manager
-echo 'DISPLAYMANAGER="sddm"' | sudo tee -a /etc/default/grub
+echo 'DISPLAYMANAGER="sddm"' | tee -a /etc/default/grub
 echo
 rc-update add display-manager default
 echo
