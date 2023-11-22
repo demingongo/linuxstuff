@@ -42,5 +42,5 @@ echo
 
 # others
 echo
-emerge --ask sys-process/htop app-misc/neofetch
+emerge --ask sys-process/htop app-misc/neofetch app-editors/neovim
 echo

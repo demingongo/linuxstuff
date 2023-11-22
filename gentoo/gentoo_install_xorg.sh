@@ -67,7 +67,7 @@ echo
 
 ## X tools
 echo
-emerge --ask x11-apps/xset x11-misc/numlockx x11-apps/xinput x11-misc/xdotool media-gfx/scrot
+emerge --ask x11-apps/xrandr x11-apps/xset x11-misc/numlockx x11-apps/xinput x11-misc/xdotool media-gfx/scrot
 echo
 emerge --ask x11-terms/xterm
 echo
