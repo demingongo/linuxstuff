@@ -14,7 +14,7 @@ echo
 
 ## xorg server
 echo
-emerge --ask x11-base/xorg-server --verbose
+emerge --ask --noreplace x11-base/xorg-server --verbose
 echo
 mkdir -p /etc/X11/xorg.conf.d
 echo
@@ -31,9 +31,9 @@ echo
 
 ## display manager (with sddm)
 echo
-emerge --ask gui-libs/display-manager-init
+emerge --ask --noreplace gui-libs/display-manager-init
 echo
-emerge --ask x11-misc/sddm
+emerge --ask --noreplace x11-misc/sddm
 echo
 mkdir -p /etc/sddm/scripts
 echo "setxkbmap be" >> /etc/sddm/scripts/Xsetup
