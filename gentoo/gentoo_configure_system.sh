@@ -3,43 +3,85 @@
 ## Fail if something went wrong
 set -euo pipefail
 
-## Installing firmware
+# Init
+DFLT_HOSTNAME="gentooman"
+
+## Set hostname
 echo
-emerge --ask sys-kernel/linux-firmware
+echo -n "Enter hostname (default: $DFLT_HOSTNAME) #: "
+read HOSTNAME
+HOSTNAME="${HOSTNAME:-$DFLT_HOSTNAME}"
+echo "$HOSTNAME" > /etc/hostname
 echo
 
-## Distribution kernel
+## Configure network
 echo
-emerge --ask sys-kernel/installkernel-gentoo
-emerge --ask sys-kernel/gentoo-kernel
-eselect kernel list
+emerge --ask net-misc/dhcpcd
 echo
-ls -l /usr/src/linux
-KERNEL_VERSION=`aws -F'-> linux-' '{print $2}' <<< $(ls -l /usr/src/linux)`
-echo "$KERNEL_VERSION"
+rc-update add dhcpcd default
+echo
+emerge --ask net-wireless/iw net-wireless/wpa_supplicant
 echo
 
-## Rebuild the initramfs for lvm support
+## Set the root password + new user
 echo
-emerge --ask sys-apps/pciutils sys-kernel/dracut sys-fs/lvm2
-rc-update add lvm boot
+echo "ROOT SETUP:"
+passwd
 echo
-dracut --kver=$KERNEL_VERSION -a lvm --force
+echo -n "NEW USER! Enter username : "
+read NEW_USERNAME
+useradd -m -G users,audio,wheel "$NEW_USERNAME"
+passwd "$NEW_USERNAME"
+
+## System logger
 echo
-ls /boot/initramfs*
+emerge --ask app-admin/sysklogd
+echo
+rc-update add sysklogd default
+echo
+
+## Cron daemon
+echo
+emerge --ask sys-process/cronie
+echo
+rc-update add cronie default
+echo
+
+## File indexing
+echo
+emerge --ask sys-apps/mlocate
+echo
+
+## Remote shell access
+echo
+rc-update add sshd default
+echo
+
+## Shell completion
+echo
+emerge --ask app-shells/bash-completion
+echo
+
+## Time synchronization
+echo
+emerge --ask net-misc/chrony
+echo
+rc-update add chronyd default
+echo
+
+## Filesystem tools
+echo
+emerge --ask sys-fs/dosfstool sys-fs/xfsprog sys-fs/ntfs3g
+echo
+emerge sys-block/io-scheduler-udev-rules
 echo
 
 ## What now ?
 echo
 echo -e "\033[0;32mGREAT ...\033[0m"
-echo -e "\033[0;33mIF EVERYTHING HAPPENED CORRECTLY ===> FOLLOW THE INSTRUCTIONS :\033[0m"
+echo -e "\033[0;33mI HOPE YOU DIDN'T FORGET TO CONFIGURE :\033[0m"
 echo
-echo "   1. Go back to the installation media:"
-echo "      exit"
+echo "   1. /etc/conf.d/keymaps"
 echo
-echo "   2. Generate fstab:"
-echo "      genfstab -U -p /mnt/gentoo >> /mnt/gentoo/etc/fstab"
-echo
-echo "   3. Arch-chroot back to the new installation:"
-echo "      arch-chroot /mnt/gentoo"
+echo "   2. /etc/conf.d/hwclock"
 echo

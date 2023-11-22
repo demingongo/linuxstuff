@@ -4,7 +4,6 @@
 set -euo pipefail
 
 ## Init
-# DFLT_ESP_PART="/dev/sda1"
 DFLT_ROOT_PART="/dev/sda2"
 
 ## Select root partition
