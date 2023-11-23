@@ -12,6 +12,6 @@ According to the requirements, the order of execution should be:
 1. `gentoo_install_base.sh`
 1. `gentoo_install_kernel.sh`
 1. `gentoo_configure_system.sh`
-1. `gentoo_install_grub.sh` (todo)
+1. `gentoo_install_grub.sh`
 1. `gentoo_install_utils.sh`
 1. `gentoo_install_xorg.sh`

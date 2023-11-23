@@ -16,6 +16,7 @@ Should be in the installation media.
 
 - Formats a disk partition (ext4).
 - Creates logical volumes for `/` and `/home` in that disk partition.
+- Mounts those logical volumes at `/mnt/gentoo` and `/mnt/gentoo/home`.
 
 ### After that?
 
