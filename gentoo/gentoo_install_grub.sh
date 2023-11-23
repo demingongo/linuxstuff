@@ -25,7 +25,7 @@ fi
 mkdir -p /efi
 mount "${ESP_PART}" /efi
 echo
-echo -n "Ok? [Y/n] "
+echo -n 'Add GRUB_PLATFORMS="efi-64" to "/etc/portage/make.conf" ? [Y/n] '
 read c_answer
 if [[ "$c_answer" != "n" ]]; then
     sed -i '/^GRUB_PLATFORMS=/d' /etc/portage/make.conf
