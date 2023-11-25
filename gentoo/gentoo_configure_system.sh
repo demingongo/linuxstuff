@@ -14,14 +14,49 @@ HOSTNAME="${HOSTNAME:-$DFLT_HOSTNAME}"
 echo "$HOSTNAME" > /etc/hostname
 echo
 
+# Useful adminstration scripts
+echo
+emerge --noreplace app-portage/gentoolkit
+echo
+
 ## Configure network
 echo
-emerge --ask net-misc/dhcpcd
+echo "Select your network management #: "
 echo
-rc-update add dhcpcd default
+echo "1) networkmanager + iwd"
+echo "2) dhcpcd + wpa_supplicant"
+echo -n "(default: 1) # "
+read NETWORK_MANAGEMENT
 echo
-emerge --ask net-wireless/iw net-wireless/wpa_supplicant
-echo
+if [ "${NETWORK_MANAGEMENT}" = "2" ]; then
+    emerge --ask net-misc/dhcpcd
+    echo
+    rc-update add dhcpcd default
+    echo
+    emerge --ask net-wireless/iw net-wireless/wpa_supplicant
+else
+    # Add "networkmanager" in global USE of /etc/portage/make.conf
+    euse -E networkmanager
+    # Update
+    emerge --changed-use --deep @world
+    # Add local flags or networkmanager
+    echo """
+net-misc/networkmanager iwd
+""" >> /etc/portage/package.use/02network-flags
+    # Install packages
+    emerge --ask --newuse net-misc/networkmanager net-wireless/iwd net-wireless/iw
+    echo
+    # Configure
+    echo """
+[device]
+wifi.backend=iwd
+wifi.iwd.autoconnect=yes
+""" > /etc/NetworkManager/conf.d/iwd.conf
+    echo
+    rc-update add iwd default
+    echo
+    rc-update add NetworkManager default
+fi
 
 ## Set the root password + new user
 echo
@@ -32,6 +67,14 @@ echo -n "NEW USER! Enter username : "
 read NEW_USERNAME
 useradd -m -G users,audio,wheel "$NEW_USERNAME"
 passwd "$NEW_USERNAME"
+echo
+### Do not exit if this one fails
+set +e
+# necessary permission for networkmanager and other tools
+gpasswd -a "$NEW_USERNAME" plugdev
+### Reset exit if one fails
+set -e
+echo
 
 ## System logger
 echo

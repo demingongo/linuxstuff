@@ -17,7 +17,7 @@ Feel free to update the script to fit your needs.
 ### What it does?
 
 1. Sets up hostname
-2. Configures networking tools (dhcpcd, iw, wpa_supplicant)
+2. Configures networking tools (NetworkManager or dhcpcd)
 3. Sets the root password
 4. Sets up new user
 5. Sets up system logger (sysklogd)
