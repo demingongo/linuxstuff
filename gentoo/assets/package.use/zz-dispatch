@@ -1,4 +1,4 @@
-# zz-autounmask: to auto enable/disable flags using dispatch-conf
+# zz-dispatch: to manage flags using dispatch-conf
 
 # required by media-gfx/gimp-2.10.36::gentoo
 # required by media-gfx/gimp (argument)
