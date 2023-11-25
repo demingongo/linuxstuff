@@ -48,6 +48,7 @@ net-misc/networkmanager iwd
     emerge --ask --newuse net-misc/networkmanager net-wireless/iwd net-wireless/iw
     echo
     # Configure
+    mkdir -p /etc/NetworkManager/conf.d
     echo """
 [device]
 wifi.backend=iwd
