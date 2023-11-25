@@ -1,3 +1,5 @@
+# zz-autounmask: to auto unmask flags using dispatch-conf
+
 # required by media-gfx/gimp-2.10.36::gentoo
 # required by media-gfx/gimp (argument)
 >=app-text/poppler-23.09.0 cairo
