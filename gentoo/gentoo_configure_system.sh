@@ -43,7 +43,7 @@ else
     # Add local flags or networkmanager
     echo """
 net-misc/networkmanager iwd
-""" >> /etc/portage/package.use/02network
+""" >> /etc/portage/package.use/network
     # Install packages
     emerge --ask --newuse net-misc/networkmanager net-wireless/iwd net-wireless/iw
     echo
