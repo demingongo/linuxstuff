@@ -21,10 +21,11 @@ echo
 
 ## Configure network
 echo
-echo "Select your network management #: "
+echo "Select your network management : "
 echo
 echo "1) networkmanager + iwd"
 echo "2) dhcpcd + wpa_supplicant"
+echo
 echo -n "(default: 1) # "
 read NETWORK_MANAGEMENT
 echo

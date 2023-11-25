@@ -39,9 +39,7 @@ emerge --config sys-libs/timezone-data
 
 ## Configure locales
 echo
-sed -i '/^en_US.UTF-8 UTF-8/d' /etc/locale.gen
-sed -i '/^#en_US.UTF-8 UTF-8/d' /etc/locale.gen
-echo "en_US.UTF-8 UTF-8" | tee -a /etc/locale.gen
+sed -i -E -e '/^(#en_US.UTF-8)/s/^#//' /etc/locale.gen
 locale-gen
 eselect locale list
 echo
